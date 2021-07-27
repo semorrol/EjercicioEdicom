@@ -1,0 +1,32 @@
+Ejercicio Automatización Back-End
+
+
+Para abordar el testing de la función/API, separaría el proceso en estos bloques:
+	- Integridad de los datos
+	- Conexiones entre funciones de la API o distintas APIs/Componentes
+	- Rendimiento
+	- Seguridad
+	- Trazabilidad
+
+He pensado en dividirlo de esta manera debido a los distintos riesgos que pueden considerarse. Por ejemplo, en cuanto a la integridad de los datos, habría que asegurarse de que el esquema o el formato de los datos es el correcto durante las llamadas y respuestas del método de la API. También, habría que comprobar lo comentado desde distintos escenarios como navegadores web o sistemas operativos.
+
+En cuanto a las conexiones de la API/función, los riesgos pueden aparecer durante la obtención del token de acceso, durante llamadas entre funciones de la API u otras APIs/componentes con las que se conecte.
+
+Por otro lado, habría que comprobar el rendimiento de la función/API para garantizar que cumple los acuerdos previstos en un SLA si lo hubiera. Además comprobaría el rendimiento con datos similares a los utilizados en un entorno de producción.
+
+Habría que testear también, aspectos relacionados con la seguridad como ataques de inyección de datos al servidor, roturas de autenticación pudiendo comprometer usuarios y contraseñas o exposición de datos sensibles como información financiera.
+
+Finalmente, sobre la trazabilidad comprobaría que las distintas respuestas de la función son almacenadas correctamente en algún servidor para garantizar su mantenimiento a lo largo de distintas versiones, ya que almacenando dichas respuestas se podría identificar un fallo introducido fácilmente.
+
+Algunas de las pruebas que se me ocurren son:
+	1. Comprobación de HTTP 200 al llamar al método
+	2. Comprobar que el token de acceso se obtiene correctamente.
+	3. Comprobar que el esquema de la respuesta de la llamada no es nulo.
+	4. Pruebas con un volumen de datos normal y un volumen de datos extenso para ver si se comporta correctamente.
+	5. Provocar el fallo de forma que salte un error y así prevenir crasheos.
+	6. Comprobar que el formato del dato está dentro de un rango coherente, es decir, que no devuelva un integer enorme cuando se espera un número del 1 al 100.
+	7. Comprobar que cuando el formato de la cabecera no es json ni xml la llamada a la función falla.
+	8. Probar que la fecha del campo "checkout" es siempre posterior a "checkin".
+	9. Hacer una llamada que intente desbordar el buffer para ver si se maneja el error correctamente.
+
+Para el desarrollo del ejercicio seleccionaré las pruebas 1 y 3.
