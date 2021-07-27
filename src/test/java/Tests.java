@@ -28,7 +28,7 @@ public class Tests {
     }
 
     @Test
-    void checkBookingDates()
+    void checkResponseNotNull()
     {
         JSONObject body = new JSONObject();
         body.put("firstname", "Andrei");
